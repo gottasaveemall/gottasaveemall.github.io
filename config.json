@@ -1,0 +1,5 @@
+{
+  "CDN_BASE": "https://huggingface.co/datasets/gottasaveemall/chub-legacy/resolve/main",
+  "THUMB_SIZE": 256,
+  "THUMB_EXT": "webp"
+}
