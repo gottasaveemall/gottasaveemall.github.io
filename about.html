@@ -6,22 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark" />
     <title>Chub Legacy</title>
-    <link href="./_app/immutable/entry/start.CboT1Xh9.js" rel="modulepreload">
-		<link href="./_app/immutable/chunks/CknZoCIM.js" rel="modulepreload">
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #0b1622;
+      }
+      #app-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        background: #0b1622;
+        color: #8aa0bd;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        transition: opacity 0.3s ease;
+      }
+      #app-loader.hide {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #app-loader .al-spin {
+        width: 44px;
+        height: 44px;
+        border: 4px solid rgba(143, 217, 255, 0.16);
+        border-top-color: #21c7a8;
+        border-radius: 50%;
+        animation: al-spin 0.8s linear infinite;
+      }
+      #app-loader p {
+        margin: 0;
+        font-size: 0.92rem;
+        letter-spacing: 0.04em;
+      }
+      @keyframes al-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #app-loader .al-spin {
+          animation-duration: 1.6s;
+        }
+      }
+    </style>
+    <link href="./_app/immutable/entry/start.LWLFcbsp.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/DHXJjHzf.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/Byx23AQE.js" rel="modulepreload">
-		<link href="./_app/immutable/chunks/BZLK0OGn.js" rel="modulepreload">
-		<link href="./_app/immutable/entry/app.By8VgZdH.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/DkYk3s2P.js" rel="modulepreload">
+		<link href="./_app/immutable/entry/app.BqChbceO.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/Bzak7iHL.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/CTzwfj9S.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/C0n5OiYB.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/CFIE3h8c.js" rel="modulepreload">
-		<link href="./_app/immutable/nodes/0.WfCNY9y_.js" rel="modulepreload">
+		<link href="./_app/immutable/nodes/0.F7jmr3wy.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/DJyO0VTk.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/C8zZRHHw.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/B1n0B3DI.js" rel="modulepreload">
-		<link href="./_app/immutable/chunks/CaTS_1m0.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/3-ead8f1.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/B9N7eLGq.js" rel="modulepreload">
-		<link href="./_app/immutable/nodes/3.DVG10yo6.js" rel="modulepreload">
+		<link href="./_app/immutable/nodes/3.CRA3IP2j.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/CpT1uD92.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/D6717WrH.js" rel="modulepreload">
 		
@@ -29,23 +77,41 @@
 		<link href="./_app/immutable/assets/3.CJiwXLUP.css" rel="stylesheet">
   </head>
   <body data-sveltekit-preload-data="hover" data-sveltekit-preload-code="hover">
+    <div id="app-loader">
+      <div class="al-spin" aria-hidden="true"></div>
+      <p>Loading catalog…</p>
+    </div>
     <div style="display: contents">
 			<script>
 				{
-					__sveltekit_1cs9e0j = {
+					__sveltekit_g3wuux = {
 						base: new URL(".", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("./_app/immutable/entry/start.CboT1Xh9.js"),
-						import("./_app/immutable/entry/app.By8VgZdH.js")
+						import("./_app/immutable/entry/start.LWLFcbsp.js"),
+						import("./_app/immutable/entry/app.BqChbceO.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element);
 					});
 				}
 			</script>
 		</div>
+    <script>
+      // Hard safety: never trap the user behind the loader (e.g. if the
+      // layout data load fails and the app never mounts). Normal, much
+      // faster dismissal happens from the root layout's onMount.
+      setTimeout(function () {
+        var l = document.getElementById('app-loader');
+        if (l) {
+          l.classList.add('hide');
+          setTimeout(function () {
+            l.remove();
+          }, 300);
+        }
+      }, 20000);
+    </script>
   </body>
 </html>
